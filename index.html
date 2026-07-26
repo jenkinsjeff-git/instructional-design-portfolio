@@ -1,171 +1,808 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeff Jenkins | Instructional Design Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+  <title>Jeff Jenkins | Instructional Design Portfolio</title>
 
-        body{
-            font-family:Arial, Helvetica, sans-serif;
-            background:#f5f7fa;
-            color:#2d3748;
-            line-height:1.6;
-        }
+  <meta
+    name="description"
+    content="Instructional design portfolio featuring software simulations, branching scenarios, responsive learning, Storyline 360, Rise 360, and Camtasia."
+  >
 
-        header{
-            background:#1f2937;
-            color:white;
-            text-align:center;
-            padding:70px 20px;
-        }
+  <style>
+    :root {
+      --navy: #172033;
+      --navy-light: #24304a;
+      --teal: #2f7f75;
+      --teal-dark: #24665f;
+      --text: #263243;
+      --muted: #64748b;
+      --background: #f7f9fc;
+      --surface: #ffffff;
+      --border: #dce3ec;
+      --soft-teal: #e8f3f1;
+      --soft-blue: #edf2f8;
+      --max-width: 1160px;
+    }
 
-        header h1{
-            font-size:3rem;
-            margin-bottom:15px;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        header p{
-            font-size:1.2rem;
-            max-width:800px;
-            margin:auto;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        main{
-            max-width:1100px;
-            margin:50px auto;
-            padding:0 20px;
-        }
+    body {
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.65;
+    }
 
-        h2{
-            margin-bottom:20px;
-            color:#1f2937;
-        }
+    a {
+      color: inherit;
+    }
 
-        .cards{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:25px;
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .card{
-            background:white;
-            border-radius:10px;
-            padding:25px;
-            box-shadow:0 8px 20px rgba(0,0,0,.08);
-        }
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-        .card h3{
-            margin-bottom:12px;
-        }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
 
-        .tools{
-            margin-top:40px;
-            text-align:center;
-        }
+    .navigation {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-        .tools span{
-            display:inline-block;
-            background:#e5e7eb;
-            padding:10px 18px;
-            margin:8px;
-            border-radius:25px;
-            font-size:.95rem;
-        }
+    .brand {
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
 
-        footer{
-            text-align:center;
-            padding:50px;
-            color:#666;
-        }
-    </style>
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
 
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--teal-dark);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(47, 127, 117, 0.24), transparent 28%),
+        linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: white;
+      padding: 104px 0 96px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 72px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #9cd1c9;
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 780px;
+      margin-bottom: 24px;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      color: #dce5f0;
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 21px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .button-primary:hover,
+    .button-primary:focus {
+      background: var(--teal-dark);
+    }
+
+    .button-secondary {
+      border-color: rgba(255, 255, 255, 0.45);
+      color: white;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-panel {
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .hero-panel h2 {
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .hero-panel ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-panel li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: #e6edf5;
+    }
+
+    .hero-panel li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(156, 209, 201, 0.16);
+      color: #aee0d9;
+      font-weight: 800;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 14px;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 100%;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 14px 35px rgba(23, 32, 51, 0.07);
+    }
+
+    .project-visual {
+      min-height: 190px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(145deg, var(--soft-blue), var(--soft-teal));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-number {
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .project-type {
+      max-width: 230px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 750;
+      line-height: 1.15;
+    }
+
+    .project-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 27px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 13px;
+      color: var(--navy);
+      font-size: 1.32rem;
+      line-height: 1.25;
+    }
+
+    .project-content p {
+      margin-bottom: 22px;
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--soft-teal);
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 650;
+    }
+
+    .approach {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .approach-copy h2 {
+      margin-bottom: 18px;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    .approach-copy p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .process-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .process-list li {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--background);
+    }
+
+    .process-number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+    }
+
+    .process-list h3 {
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 1.02rem;
+    }
+
+    .process-list p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-copy h2 {
+      margin-bottom: 18px;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    .about-copy p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .skills-panel {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: white;
+    }
+
+    .skills-panel h3 {
+      margin-bottom: 18px;
+      color: var(--navy);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .skills li {
+      padding: 8px 12px;
+      border-radius: 7px;
+      background: var(--soft-blue);
+      color: var(--navy-light);
+      font-size: 0.88rem;
+      font-weight: 650;
+    }
+
+    .contact {
+      padding: 76px 0;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 15px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .contact p {
+      max-width: 630px;
+      margin: 0 auto;
+      color: #d7e0eb;
+      font-size: 1.08rem;
+    }
+
+    .contact-note {
+      margin-top: 24px;
+      color: #aebdce;
+      font-size: 0.92rem;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: #101725;
+      color: #9faec0;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    :focus-visible {
+      outline: 3px solid #78bcb2;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .approach-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        max-width: 680px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .navigation {
+        min-height: auto;
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 18px;
+        overflow-x: auto;
+      }
+
+      .hero {
+        padding: 76px 0 70px;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <header class="site-header">
+    <nav class="navigation container" aria-label="Primary navigation">
+      <a class="brand" href="#top">Jeff Jenkins</a>
 
-<h1>Jeff Jenkins</h1>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<p>
-Instructional Designer specializing in interactive eLearning,
-software simulations, branching scenarios, and responsive learning
-experiences.
-</p>
+  <main id="top">
 
-</header>
+    <section class="hero">
+      <div class="hero-grid container">
 
-<main>
+        <div>
+          <span class="eyebrow">Instructional Designer</span>
 
-<section>
+          <h1>
+            Learning experiences designed to solve measurable business problems.
+          </h1>
 
-<h2>Featured Projects</h2>
+          <p class="hero-copy">
+            I design and develop interactive eLearning, software simulations,
+            branching scenarios, and responsive learning experiences using
+            Storyline 360, Rise 360, and Camtasia.
+          </p>
 
-<div class="cards">
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">View featured work</a>
+            <a class="button button-secondary" href="#approach">See my approach</a>
+          </div>
+        </div>
 
-<div class="card">
-<h3>Data Hygiene & Automation in Google Sheets</h3>
+        <aside class="hero-panel" aria-label="Portfolio focus areas">
+          <h2>What this portfolio demonstrates</h2>
 
-<p>
-Interactive software simulation demonstrating Google Sheets data validation,
-guided practice, and learner feedback built with Storyline 360 and Camtasia.
-</p>
+          <ul>
+            <li>Performance-focused instructional strategy</li>
+            <li>Interactive Storyline development</li>
+            <li>Responsive and accessible course design</li>
+            <li>Video production and software simulation</li>
+            <li>Measurement tied to workplace behavior</li>
+          </ul>
+        </aside>
 
-</div>
+      </div>
+    </section>
 
-<div class="card">
+    <section id="work">
+      <div class="container">
 
-<h3>Slack Communication & Async Etiquette</h3>
+        <div class="section-heading">
+          <span class="eyebrow">Featured work</span>
 
-<p>
-Decision-based branching scenario illustrating effective communication
-choices within hybrid teams using Storyline 360.
-</p>
+          <h2>Three projects. Three different learning challenges.</h2>
 
-</div>
+          <p>
+            Each case study begins with a business problem, applies an appropriate
+            instructional strategy, and defines how success could be measured.
+          </p>
+        </div>
 
-<div class="card">
+        <div class="project-grid">
 
-<h3>Rapid Course Authoring Best Practices</h3>
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="project-number">Project 01</span>
+              <span class="project-type">Software Simulation</span>
+            </div>
 
-<p>
-Responsive Rise 360 course demonstrating accessibility,
-responsive design, and instructional design best practices.
-</p>
+            <div class="project-content">
+              <h3>Data Hygiene &amp; Automation in Google Sheets</h3>
 
-</div>
+              <p>
+                A guided demonstration and interactive practice experience that
+                teaches learners to prevent inconsistent spreadsheet entries with
+                data-validation rules.
+              </p>
 
-</div>
+              <ul class="tag-list" aria-label="Project tools and methods">
+                <li>Storyline 360</li>
+                <li>Camtasia</li>
+                <li>Simulation</li>
+              </ul>
 
-</section>
+              <p class="status">Case study and interactive module in development.</p>
+            </div>
+          </article>
 
-<section class="tools">
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="project-number">Project 02</span>
+              <span class="project-type">Branching Scenario</span>
+            </div>
 
-<h2>Development Tools</h2>
+            <div class="project-content">
+              <h3>Slack Communication &amp; Async Etiquette</h3>
 
-<span>Articulate Storyline 360</span>
-<span>Articulate Rise 360</span>
-<span>Camtasia</span>
-<span>Google Workspace</span>
-<span>xAPI</span>
-<span>Accessibility</span>
+              <p>
+                A decision-based scenario in which communication choices affect
+                visible Team Focus and Project Clarity meters.
+              </p>
 
-</section>
+              <ul class="tag-list" aria-label="Project tools and methods">
+                <li>Storyline 360</li>
+                <li>Branching</li>
+                <li>Variables</li>
+              </ul>
 
-</main>
+              <p class="status">Case study and interactive module in development.</p>
+            </div>
+          </article>
 
-<footer>
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="project-number">Project 03</span>
+              <span class="project-type">Responsive Learning</span>
+            </div>
 
-© 2026 Jeff Jenkins
+            <div class="project-content">
+              <h3>Rapid Course Authoring Best Practices</h3>
 
-</footer>
+              <p>
+                A concise Rise 360 learning experience that models clean visual
+                design, appropriate block selection, responsive layout, and
+                accessibility practices.
+              </p>
+
+              <ul class="tag-list" aria-label="Project tools and methods">
+                <li>Rise 360</li>
+                <li>Accessibility</li>
+                <li>Camtasia</li>
+              </ul>
+
+              <p class="status">Case study and responsive module in development.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach">
+      <div class="approach-grid container">
+
+        <div class="approach-copy">
+          <span class="eyebrow">Design approach</span>
+
+          <h2>Start with the performance problem, not the authoring tool.</h2>
+
+          <p>
+            My process connects instructional decisions to the behavior, workflow,
+            or operational outcome that needs to change. Technology is selected
+            only after the learning challenge is clear.
+          </p>
+        </div>
+
+        <ol class="process-list">
+          <li>
+            <span class="process-number">1</span>
+            <div>
+              <h3>Define the business problem</h3>
+              <p>Identify the performance gap and the operational cost behind it.</p>
+            </div>
+          </li>
+
+          <li>
+            <span class="process-number">2</span>
+            <div>
+              <h3>Design for realistic decisions and tasks</h3>
+              <p>Use practice, feedback, simulation, or branching when the work requires it.</p>
+            </div>
+          </li>
+
+          <li>
+            <span class="process-number">3</span>
+            <div>
+              <h3>Select the right development tools</h3>
+              <p>Match Storyline, Rise, Camtasia, and supporting assets to the experience.</p>
+            </div>
+          </li>
+
+          <li>
+            <span class="process-number">4</span>
+            <div>
+              <h3>Measure behavior beyond completion</h3>
+              <p>Connect learning evidence to observable workplace outcomes whenever possible.</p>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about-grid container">
+
+        <div class="about-copy">
+          <span class="eyebrow">About</span>
+
+          <h2>Technical development supported by purposeful learning design.</h2>
+
+          <p>
+            I create learning experiences that balance clear instruction,
+            thoughtful interaction, visual restraint, accessibility, and practical
+            performance support.
+          </p>
+
+          <p>
+            My portfolio work includes software simulation, branching logic,
+            variable-driven feedback, multimedia production, responsive authoring,
+            and measurement planning.
+          </p>
+        </div>
+
+        <aside class="skills-panel">
+          <h3>Tools and capabilities</h3>
+
+          <ul class="skills">
+            <li>Storyline 360</li>
+            <li>Rise 360</li>
+            <li>Camtasia</li>
+            <li>Instructional Design</li>
+            <li>Branching Scenarios</li>
+            <li>Software Simulation</li>
+            <li>Accessibility</li>
+            <li>Responsive Design</li>
+            <li>Learning Measurement</li>
+            <li>AI-Assisted Production</li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+
+        <h2>Let’s build learning that changes what people do.</h2>
+
+        <p>
+          Contact information and professional profile links will be added before
+          the portfolio’s final public launch.
+        </p>
+
+        <p class="contact-note">
+          Portfolio projects are currently being completed and published.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Jeff Jenkins · Instructional Design Portfolio
+    </div>
+  </footer>
 
 </body>
 </html>
